@@ -21,9 +21,24 @@
 #define CMTHIN 1013
 #define FABRICANTE 1014
 
-const char* program_name;
+extern const char* program_name;
+extern const char* db_host;
+extern const char* db_user;
+extern const char* db_passwd;
+extern const char* db_database;
+extern const char* db_so_table;
+extern const char* db_software_table;
+extern const char* hostname;
+extern const char* tipo_equipamento;
+extern const char* endereco_ip;
+extern const char* sistema_operacional;
+extern const char* kernel;
+extern const char* baixa_imagem;
+extern const char* data_inventario;
+extern const char* cmthin;
+extern const char* fabricante;
 
-void print_usage (FILE* stream, int exit_code);
+void print_usage (FILE* stream, int exit_code, char* program_name);
 
 void parser_options(int argc, char* argv[]);
 

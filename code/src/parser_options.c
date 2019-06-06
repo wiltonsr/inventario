@@ -1,6 +1,22 @@
 #include "parser_options.h"
 
-void print_usage (FILE* stream, int exit_code)
+const char* db_host = NULL;
+const char* db_user = NULL;
+const char* db_passwd = NULL;
+const char* db_database = NULL;
+const char* db_so_table = NULL;
+const char* db_software_table = NULL;
+const char* hostname = NULL;
+const char* tipo_equipamento = NULL;
+const char* endereco_ip = NULL;
+const char* sistema_operacional = NULL;
+const char* kernel = NULL;
+const char* baixa_imagem = NULL;
+const char* data_inventario = NULL;
+const char* cmthin = NULL;
+const char* fabricante = NULL;
+
+void print_usage (FILE* stream, int exit_code, char* program_name)
 {
   fprintf (stream, "Como utilizar:  %s opcoes\n", program_name);
   fprintf (stream,
@@ -48,23 +64,7 @@ void parser_options(int argc, char* argv[])
     { NULL,                  1, NULL, 0                   }
   };
 
-  const char* db_host = NULL;
-  const char* db_user = NULL;
-  const char* db_passwd = NULL;
-  const char* db_database = NULL;
-  const char* db_so_table = NULL;
-  const char* db_software_table = NULL;
-  const char* hostname = NULL;
-  const char* tipo_equipamento = NULL;
-  const char* endereco_ip = NULL;
-  const char* sistema_operacional = NULL;
-  const char* kernel = NULL;
-  const char* baixa_imagem = NULL;
-  const char* data_inventario = NULL;
-  const char* cmthin = NULL;
-  const char* fabricante = NULL;
-
-  program_name = argv[0];
+  const char* program_name = argv[0];
 
   do {
     next_option = getopt_long (argc, argv, short_options,
@@ -72,7 +72,7 @@ void parser_options(int argc, char* argv[])
     switch (next_option)
     {
       case 'h':
-        print_usage (stdout, 0);
+        print_usage (stdout, 0, (char *)program_name);
 
       case DB_HOST:
         db_host = optarg;
@@ -135,13 +135,13 @@ void parser_options(int argc, char* argv[])
         break;
 
       case '?':
-        print_usage (stderr, 1);
+        print_usage (stderr, 1, (char *)program_name);
 
       case -1:
         break;
 
       default:
-        print_usage (stdout, 0);
+        print_usage (stdout, 0, (char *)program_name);
     }
   }
   while (next_option != -1);
