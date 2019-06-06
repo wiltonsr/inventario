@@ -22,20 +22,38 @@ void print_usage (FILE* stream, int exit_code, char* program_name)
   fprintf (stream,
       " -h  --help                 Exibe esta mensagem.\n"
       "     --db-host              Endereco IP do Banco de Dados.\n"
+      "                            [%s]\n"
       "     --db-user              Usuario do Banco de Dados.\n"
+      "                            [%s]\n"
       "     --db-passwd            Senha do Banco de Dados.\n"
+      "                            [%s]\n"
       "     --db-database          Nome do Banco de Dados.\n"
+      "                            [%s]\n"
       "     --db-so-table          Nome da Tabela de Informacoes do SO.\n"
+      "                            [%s]\n"
       "     --db-software-table    Nome da Tabela de Informacoes de Softwares.\n"
+      "                            [%s]\n"
       "     --hostname             Nome do equipamento.\n"
+      "                            [%s]\n"
       "     --tipo-equipamento     Tipo do equipamento.\n"
+      "                            [%s]\n"
       "     --endereco-ip          Endereco IP do equipamento.\n"
+      "                            [%s]\n"
       "     --sistema-operacional  Sistema Operacional do equipamento.\n"
+      "                            [%s]\n"
       "     --kernel               Kernel do equipamento.\n"
+      "                            [%s]\n"
       "     --baixa-imagem         Data de Baixa da Imagem.\n"
+      "                            [%s]\n"
       "     --data-inventario      Data do Inventario.\n"
+      "                            [%s]\n"
       "     --cmthin               Versao do pacote cmthin.\n"
-      "     --fabricante           Fabricante do equipamento.\n");
+      "                            [%s]\n"
+      "     --fabricante           Fabricante do equipamento.\n"
+      "                            [%s]\n",
+      db_host, db_user, db_passwd, db_database, db_so_table, db_software_table,
+      hostname, tipo_equipamento, endereco_ip, sistema_operacional, kernel,
+      baixa_imagem, data_inventario, cmthin, fabricante);
   exit (exit_code);
 }
 
