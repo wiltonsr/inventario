@@ -36,6 +36,7 @@ all: clean directories $(PROGRAM)
 $(PROGRAM): $(SOURCE)
 	@echo "Initing compilation..."
 	@echo "Compile source files"
+	$(CC) -c $(SRC_DIR)/mysql_utils.c -o $(OBJ_DIR)/mysql_utils.o $(CFLAGS)
 	$(CC) -c $(SRC_DIR)/parser_options.c -o $(OBJ_DIR)/parser_options.o $(CFLAGS)
 	$(CC) -c $(SRC_DIR)/main.c -o $(OBJ_DIR)/main.o $(CFLAGS)
 	@echo "Compile objects to main"
@@ -47,7 +48,7 @@ directories:
 	@$(MKDIR_P) $(BIN_DIR)
 
 clean:
-	@echo "Excluding..."
+	@echo "Initing Cleaning..."
 	@echo "Clean executables..."
 	rm -f $(PROGRAM)
 	rm -rf $(BIN_DIR)
