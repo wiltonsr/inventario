@@ -13,15 +13,16 @@ int main(int argc, char* argv[])
 
   sprintf(query_so, "INSERT INTO %s (hostname,tipo_equipamento,ip,so,kernel,baixa_imagem,data) "
       "VALUES ('%s','%s','%s','%s','%s','%s','%s') "
-      "ON DUPLICATE KEY UPDATE ip=VALUES(ip),so=VALUES(so),kernel=VALUES(kernel),"
-      "baixa_imagem=VALUES(baixa_imagem),data=VALUES(data)",
+      "ON DUPLICATE KEY UPDATE tipo_equipamento=VALUES(tipo_equipamento),ip=VALUES(ip),"
+      "so=VALUES(so),kernel=VALUES(kernel),baixa_imagem=VALUES(baixa_imagem),data=VALUES(data)",
       db_so_table, hostname, tipo_equipamento, endereco_ip, sistema_operacional,
       kernel, baixa_imagem, data_inventario);
 
-  sprintf(query_software, "INSERT INTO %s (hostname,cmthin,fabricante) "
-      "VALUES ('%s','%s','%s') "
-      "ON DUPLICATE KEY UPDATE cmthin=VALUES(cmthin),fabricante=VALUES(fabricante)",
-      db_software_table, hostname, cmthin, fabricante);
+  sprintf(query_software, "INSERT INTO %s (hostname,cmthin,fabricante,scthin,versao_apl) "
+      "VALUES ('%s','%s','%s','%s','%s') "
+      "ON DUPLICATE KEY UPDATE cmthin=VALUES(cmthin),fabricante=VALUES(fabricante),"
+      "scthin=VALUES(scthin),versao_apl=VALUES(versao_apl)",
+      db_software_table, hostname, cmthin, fabricante, scthin, apl);
 
   if (mysql_real_connect(conn, db_host, db_user, db_passwd,
         db_database, 0, NULL, 0) == NULL) {

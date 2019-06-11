@@ -15,6 +15,8 @@ const char* baixa_imagem = NULL;
 const char* data_inventario = NULL;
 const char* cmthin = NULL;
 const char* fabricante = NULL;
+const char* scthin = NULL;
+const char* apl = NULL;
 
 void print_usage (FILE* stream, int exit_code, char* program_name)
 {
@@ -50,10 +52,14 @@ void print_usage (FILE* stream, int exit_code, char* program_name)
       "     --cmthin               Versao do pacote cmthin.\n"
       "                            [%s]\n"
       "     --fabricante           Fabricante do equipamento.\n"
+      "                            [%s]\n"
+      "     --scthin               Versao do pacote scthin.\n"
+      "                            [%s]\n"
+      "     --apl                  Versao do APL.\n"
       "                            [%s]\n",
       db_host, db_user, db_passwd, db_database, db_so_table, db_software_table,
       hostname, tipo_equipamento, endereco_ip, sistema_operacional, kernel,
-      baixa_imagem, data_inventario, cmthin, fabricante);
+      baixa_imagem, data_inventario, cmthin, fabricante, scthin, apl);
   exit (exit_code);
 }
 
@@ -64,21 +70,23 @@ void parser_options(int argc, char* argv[])
   const char* const short_options = "h";
   const struct option long_options[] = {
     { "help",                0, NULL, 'h'                 },
-    { "db-host",             1, NULL, DB_HOST              },
-    { "db-user",             1, NULL, DB_USER              },
-    { "db-passwd",           1, NULL, DB_PASSWD            },
-    { "db-database",         1, NULL, DB_DATABASE          },
-    { "db-so-table",         1, NULL, DB_SO_TABLE           },
-    { "db-software-table",   1, NULL, DB_SOFTWARE_TABLE     },
+    { "db-host",             1, NULL, DB_HOST             },
+    { "db-user",             1, NULL, DB_USER             },
+    { "db-passwd",           1, NULL, DB_PASSWD           },
+    { "db-database",         1, NULL, DB_DATABASE         },
+    { "db-so-table",         1, NULL, DB_SO_TABLE         },
+    { "db-software-table",   1, NULL, DB_SOFTWARE_TABLE   },
     { "hostname",            1, NULL, HOSTNAME            },
-    { "tipo-equipamento",    1, NULL, TIPO_EQUIPAMENTO     },
-    { "endereco-ip",         1, NULL, ENDERECO_IP          },
-    { "sistema-operacional", 1, NULL, SISTEMA_OPERACIONAL  },
+    { "tipo-equipamento",    1, NULL, TIPO_EQUIPAMENTO    },
+    { "endereco-ip",         1, NULL, ENDERECO_IP         },
+    { "sistema-operacional", 1, NULL, SISTEMA_OPERACIONAL },
     { "kernel",              1, NULL, KERNEL              },
-    { "baixa-imagem",        1, NULL, BAIXA_IMAGEM         },
-    { "data-inventario",     1, NULL, DATA_INVENTARIO      },
+    { "baixa-imagem",        1, NULL, BAIXA_IMAGEM        },
+    { "data-inventario",     1, NULL, DATA_INVENTARIO     },
     { "cmthin",              1, NULL, CMTHIN              },
     { "fabricante",          1, NULL, FABRICANTE          },
+    { "scthin",              1, NULL, SCTHIN              },
+    { "apl",                 1, NULL, APL                 },
     { NULL,                  1, NULL, 0                   }
   };
 
@@ -150,6 +158,14 @@ void parser_options(int argc, char* argv[])
 
       case FABRICANTE:
         fabricante = optarg;
+        break;
+
+      case SCTHIN:
+        scthin = optarg;
+        break;
+
+      case APL:
+        apl = optarg;
         break;
 
       case '?':

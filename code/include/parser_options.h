@@ -20,6 +20,8 @@
 #define DATA_INVENTARIO 1012
 #define CMTHIN 1013
 #define FABRICANTE 1014
+#define SCTHIN 1015
+#define APL 1016
 
 extern const char* program_name;
 extern const char* db_host;
@@ -37,6 +39,8 @@ extern const char* baixa_imagem;
 extern const char* data_inventario;
 extern const char* cmthin;
 extern const char* fabricante;
+extern const char* scthin;
+extern const char* apl;
 
 void print_usage (FILE* stream, int exit_code, char* program_name);
 

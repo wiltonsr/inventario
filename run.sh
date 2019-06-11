@@ -15,4 +15,6 @@
   --baixa-imagem data \
   --data-inventario '123232434' \
   --cmthin 'versao-cmthin' \
-  --fabricante Diebold
+  --fabricante Diebold \
+  --scthin 'versao-scthin' \
+  --apl 'versao-apl'
